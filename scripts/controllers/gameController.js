@@ -229,10 +229,4 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
                 $scope.playGame();
         }
     };
-
-
-    //Let opponent know when player disconnects
-    window.onbeforeunload = function(){
-        $rootScope.socket.emit('leave',$rootScope.friend);
-    };
 });

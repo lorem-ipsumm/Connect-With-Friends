@@ -60,7 +60,7 @@ angular.module('main').controller('homeController',function($scope,$rootScope){
 
 
     $rootScope.newGame = function(){
-        $rootScope.socket = io('http://mysterious-hollows-74939.herokuapp.com', {secure: true, rejectUnauthorized: false});
+        $rootScope.socket = io('https://mysterious-hollows-74939.herokuapp.com', {secure: true, rejectUnauthorized: false});
         //globalAgent.options.rejectUnauthorized = false; 
         $rootScope.socket.on('get-id',function(data){
             $rootScope.id = data;

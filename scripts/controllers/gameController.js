@@ -44,7 +44,7 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
     
     //If user loads from the game page go through everything from the home page
     if($rootScope.playing == false || $rootScope.playing == undefined){
-        $rootScope.socket = io('http://localhost:3000');
+        $rootScope.socket = io('https://mysterious-hollows-74939.herokuapp.com');
         
         $rootScope.socket.on('get-id',function(data){
             $rootScope.id = data;

@@ -3,6 +3,7 @@ angular.module('main').controller('homeController',function($scope,$rootScope){
     $rootScope.playing = false;
     $rootScope.requested = false;
     $scope.message = document.getElementsByClassName('info-message')[0];
+    
 
     $scope.keyPressed = function(e){
         if(e.key == "Enter"){
@@ -13,7 +14,7 @@ angular.module('main').controller('homeController',function($scope,$rootScope){
             
             //Is called when host responds to guest
             $rootScope.socket.on('request',function(data){
-                console.log(data);
+                
                 //If the data is an array, setup match
                 //Data = guestId
                 //[hostId,guestId,hostTurn,color]

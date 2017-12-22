@@ -162,6 +162,10 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
             $scope.updateGame([data[0],data[1]]);
             $scope.message.innerHTML = "YOU LOST :(";
         });
+
+        $rootScope.socket.on('leave',function(data){
+            $scope.message.innerHTML = "YOUR FRIEND DISCONNECTED :(";
+        });
         
         
     }
@@ -220,5 +224,11 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
             if(win == 0 && $rootScope.playing == true)
                 $scope.playGame();
         }
+    };
+
+
+    //Let opponent know when player disconnects
+    window.onbeforeunload = function(){
+        $rootScope.socket.emit('leave',$rootScope.friend);
     };
 });

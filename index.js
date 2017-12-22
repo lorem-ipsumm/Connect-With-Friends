@@ -14,15 +14,17 @@ app.get('/', function(req, res){
 });
 
 io.on('connection',function(socket){
-    console.log("new connection");
 
     //give ids to new users
     socket.emit("get-id",socket.id);
 
+    socket.on('leave',function(data){
+      socket.to(data).emit('leave',null);
+    });
 
 
     socket.on('request',function(data){
-
+  
       //Data = host id
       //Sends id of guest to host
       socket.to(data).emit("request",socket.id);

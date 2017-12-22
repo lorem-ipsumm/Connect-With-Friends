@@ -1,6 +1,44 @@
+<html lang="en" ng-app="main">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Connect With Friends</title>
+        <link rel="stylesheet" href="../../css/home.css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+        <link rel="icon" type="image/png" href="assets/favicon16x16.png" sizes="16x16">  
+        <link rel="icon" type="image/png" href="assets/favicon32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="assets/favicon92x92.png" sizes="96x96">    
 
-<script src="/socket.io/socket.io.js"></script>
-<script>
-  var socket = io();
-</script>
+        
+    </head>
+    <body>
+        
+        <div ng-view class="wrapper"></div>
+        
+        <div class="info-wrapper">
+            <span><a href="#!about">ABOUT</a></span>
+            <span><a href="/">HOME</a></span>
+            <span><a href="https://github.com/SolarFloss/Connect-With-Friends">GITHUB</a></span>
+        </div>
     
+    </body>
+
+    
+
+    <!--External Scripts-->
+    <script src="scripts/socket.io.js"></script>
+    <script src="scripts/socket.io.p2p.min.js"></script>
+    <script src="scripts/anime.min.js"></script>
+    <script src="scripts/peer.min.js"></script>
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/angular-route.min.js"></script>
+    <script src="scripts/main.js"></script>
+    
+
+    <!--Controllers-->
+    <script src="scripts/controllers/homeController.js"></script>
+    <script src="scripts/controllers/aboutController.js"></script>
+    <script src="scripts/controllers/gameController.js"></script>
+    
+</html>

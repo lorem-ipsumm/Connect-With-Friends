@@ -11,6 +11,10 @@ app.use(function(req, res, next) {
 });
 
 //setInterval(() => io.emit('time', new Date().toTimeString()), 5000);
+app.use("/", express.static(__dirname + '/'));
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/index.html');
+});
 
 io.on('connection',function(socket){
     console.log("new connection");

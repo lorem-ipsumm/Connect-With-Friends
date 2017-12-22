@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="css/game.css">
+<div class="main-wrapper" ng-controller="gameController">
+    <div class="text-wrapper">
+        <span class="message">WAITING FOR A FRIEND</span>
+        <br>
+        <span id="share">Share This Code With A Friend: <i>{{id}}</i></span>
+    </div>
+    <div class="board-wrapper">
+        <div class="indicator-wrapper">
+            <div class="indicator">
+
+            </div>
+        </div>
+        
+        <div class="board">
+            
+            <div class="column" ng-repeat="i in [1,2,3,4,5,6,7]">
+                <div class="spot" id="{{i}}-{{j}}" ng-repeat="j in [1,2,3,4,5,6]" ng-mouseover="spotHovered(i)"  ng-click = "spotClicked($event)">
+
+                </div>
+            </div>
+        
+        </div>
+    </div>
+</div>

@@ -1,0 +1,112 @@
+$yellow: #fffc82;
+$red: #ff6868;
+
+
+//Reset
+*{
+    //box-sizing: border-box;
+}
+
+body,
+html{
+    margin: 0;
+    padding: 0;
+}
+
+.main-wrapper{
+    text-align: center;
+    position: fixed;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 90%;
+    height: 90%;
+    text-align: center;
+
+    .text-wrapper{
+        font-family: 'Raleway', sans-serif;
+        color: white;
+        margin-bottom: 5em;
+        text-align: center;
+        width: 100%;
+        span{
+            display: block;
+            margin: 0px 0px;
+
+            i{
+                color: $red;
+                letter-spacing: 1px;
+                //text-decoration: underline;
+            }
+
+            &:first-child{
+                font-size: 3rem;
+            }
+            &:last-child{
+                font-size: 1.3rem;
+            }
+        }
+    }
+
+    .board-wrapper{
+        
+        height: 500px;
+        width: 100%;
+        text-align: center;
+        //padding: 50px;
+        .indicator-wrapper{
+            width: 600px;
+            margin: auto;
+            padding: 10px 24px;
+            .indicator{
+                width: 68px;
+                height: 68px;
+                background-color: $red;
+                //opacity: .7;
+                border-radius: 100px;
+                transition: all ease .3s;
+                
+            }
+        }
+        
+        .board{
+            display: flex;
+            width: 600px;
+            height: 500px;
+            background-color: #0173D4;
+            border-radius: 5px;
+            margin: auto;
+            padding: 10px 2px;
+            
+            
+            justify-content: center;
+            border: 5px solid #005196;
+            border-top: 5px solid #003a6d;
+            .column{
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                width: 68px;
+                //background-color: black;
+                margin: 0px 6px;
+                justify-content: center;
+                align-items: center;
+                
+                .spot{
+                    width: 100%;
+                    height: 68px;
+                    margin: 5px 0px;
+                    cursor: pointer;
+                    background-color: #33383d;
+                    border-radius: 100px;
+                    position: relative;
+                    border: 3px solid #003a6d;
+                }
+            }
+
+            
+        }
+    }
+}

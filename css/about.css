@@ -1,0 +1,22 @@
+.about-wrapper {
+  text-align: center;
+  width: 500px;
+  height: 450px;
+  margin: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.about-wrapper p {
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.5em;
+}
+
+.about-wrapper p a {
+  color: white;
+}
+/*# sourceMappingURL=about.css.map */

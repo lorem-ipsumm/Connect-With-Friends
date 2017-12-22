@@ -1,0 +1,99 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+.main-wrapper {
+  text-align: center;
+  position: fixed;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 90%;
+  height: 90%;
+  text-align: center;
+}
+
+.main-wrapper .text-wrapper {
+  font-family: 'Raleway', sans-serif;
+  color: white;
+  margin-bottom: 5em;
+  text-align: center;
+  width: 100%;
+}
+
+.main-wrapper .text-wrapper span {
+  display: block;
+  margin: 0px 0px;
+}
+
+.main-wrapper .text-wrapper span i {
+  color: #ff6868;
+  letter-spacing: 1px;
+}
+
+.main-wrapper .text-wrapper span:first-child {
+  font-size: 3rem;
+}
+
+.main-wrapper .text-wrapper span:last-child {
+  font-size: 1.3rem;
+}
+
+.main-wrapper .board-wrapper {
+  height: 500px;
+  width: 100%;
+  text-align: center;
+}
+
+.main-wrapper .board-wrapper .indicator-wrapper {
+  width: 600px;
+  margin: auto;
+  padding: 10px 24px;
+}
+
+.main-wrapper .board-wrapper .indicator-wrapper .indicator {
+  width: 68px;
+  height: 68px;
+  background-color: #ff6868;
+  border-radius: 100px;
+  transition: all ease .3s;
+}
+
+.main-wrapper .board-wrapper .board {
+  display: flex;
+  width: 600px;
+  height: 500px;
+  background-color: #0173D4;
+  border-radius: 5px;
+  margin: auto;
+  padding: 10px 2px;
+  justify-content: center;
+  border: 5px solid #005196;
+  border-top: 5px solid #003a6d;
+}
+
+.main-wrapper .board-wrapper .board .column {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 68px;
+  margin: 0px 6px;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-wrapper .board-wrapper .board .column .spot {
+  width: 100%;
+  height: 68px;
+  margin: 5px 0px;
+  cursor: pointer;
+  background-color: #33383d;
+  border-radius: 100px;
+  position: relative;
+  border: 3px solid #003a6d;
+}
+/*# sourceMappingURL=game.css.map */

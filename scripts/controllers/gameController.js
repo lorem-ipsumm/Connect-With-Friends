@@ -174,8 +174,8 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
         //1 = Red
         //2 = Yellow
         if($rootScope.turn){
-        
-            var id = el.srcElement.id;
+            
+            var id = el.target.id;
             var x = id.substring(0,1) - 1;
             var y = id.substring(2) - 1;
             var win = 0;

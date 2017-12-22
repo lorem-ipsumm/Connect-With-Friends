@@ -42,4 +42,6 @@ io.on('connection',function(socket){
     socket.on('win',function(data){
       socket.to(data[2]).emit('win',data);
     });
+
+    
 });

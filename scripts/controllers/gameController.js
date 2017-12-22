@@ -144,8 +144,8 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
     }
 
     $scope.initializeListeners = function(){
-        $scope.userPlacement = new Audio('userPlacement.wav');
-        $scope.friendPlacement = new Audio('friendPlacement.wav');
+        $scope.userPlacement = new Audio('assets/userPlacement.wav');
+        $scope.friendPlacement = new Audio('assets/friendPlacement.wav');
 
         
         $rootScope.socket.on('turn-over',function(data){
@@ -207,6 +207,8 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
                     if(win > 0){
                         
                         $scope.message.innerHTML = "YOU WON! :)";
+                        $rootScope.playing = false;
+                        $rootScope.turn = false;
                         $rootScope.socket.emit('win',[x,i,$rootScope.friend]);
                         break;
                     }

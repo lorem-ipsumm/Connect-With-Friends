@@ -7,6 +7,7 @@ var io = require('socket.io')(server);
 
 
 io.on('connection',function(socket){
+    console.log("new connection");
 
     //give ids to new users
     socket.emit("get-id",socket.id);

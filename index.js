@@ -1,14 +1,11 @@
 var express = require('express'),
-    app = express(),
-    server = require('http').createServer(app),
-    io = require('socket.io').listen(server);
+http = require('http');
+var app = express();
+var server = http.createServer(app);
+var io = require('socket.io').listen(server);
 
 server.listen(process.env.PORT || 3000);
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  next();
-});
+
 
 //setInterval(() => io.emit('time', new Date().toTimeString()), 5000);
 app.use("/", express.static(__dirname + '/'));

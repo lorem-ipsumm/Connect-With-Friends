@@ -9,6 +9,7 @@ server.listen(process.env.PORT || 3000);
 
 //setInterval(() => io.emit('time', new Date().toTimeString()), 5000);
 app.use("/", express.static(__dirname + '/'));
+io.set('match origin protocol', true);
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });

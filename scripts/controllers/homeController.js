@@ -4,7 +4,7 @@ angular.module('main').controller('homeController',function($scope,$rootScope){
 
     $scope.keyPressed = function(e){
         if(e.key == "Enter"){
-            $rootScope.socket = io('https://mysterious-hollows-74939.herokuapp.com');
+            $rootScope.socket = io('https://mysterious-hollows-74939.herokuapp.com', {secure: true});
             
             //Request to play with user with specified id
             $rootScope.socket.emit('request',$scope.input);
@@ -60,7 +60,7 @@ angular.module('main').controller('homeController',function($scope,$rootScope){
 
 
     $rootScope.newGame = function(){
-        $rootScope.socket = io('http://mysterious-hollows-74939.herokuapp.com');
+        $rootScope.socket = io('http://mysterious-hollows-74939.herokuapp.com', {secure: true});
         
         $rootScope.socket.on('get-id',function(data){
             $rootScope.id = data;
@@ -90,7 +90,6 @@ angular.module('main').controller('homeController',function($scope,$rootScope){
                 
                 
                 $rootScope.socket.emit('request',[$rootScope.id,data,turn,color]);
-                $rootScope.emit("start");
             }
         })
     }

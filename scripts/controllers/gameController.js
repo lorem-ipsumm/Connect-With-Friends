@@ -1,5 +1,4 @@
 angular.module('main').controller('gameController',function($scope,$rootScope){
-
     $scope.indicator = document.getElementsByClassName("indicator")[0];
     $scope.shareMessage = document.getElementById("share");
     $scope.connection;
@@ -141,12 +140,12 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
             document.getElementById((x+1) + "-" + (y+1)).style.backgroundColor = "#ff6868";
             $scope.map[y][x] = 1;
         }
-        
+        $scope.friendPlacement.play();
     }
 
     $scope.initializeListeners = function(){
-        //Run when friend's turn is over
-        //Data = [x,y]
+        $scope.userPlacement = new Audio('userPlacement.wav');
+        $scope.friendPlacement = new Audio('friendPlacement.wav');
 
         
         $rootScope.socket.on('turn-over',function(data){
@@ -168,6 +167,9 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
         });
         
         
+        
+        
+        
     }
     
     if($rootScope.playing == true){
@@ -182,7 +184,7 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
         //1 = Red
         //2 = Yellow
         if($rootScope.turn){
-            
+            $scope.userPlacement.play();
             var id = el.target.id;
             var x = id.substring(0,1) - 1;
             var y = id.substring(2) - 1;

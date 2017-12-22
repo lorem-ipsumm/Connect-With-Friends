@@ -1,5 +1,5 @@
 angular.module('main').controller('gameController',function($scope,$rootScope){
-    $scope.peer = new Peer({key: 'lwjd5qra8257b9'});
+
     $scope.indicator = document.getElementsByClassName("indicator")[0];
     $scope.shareMessage = document.getElementById("share");
     $scope.connection;

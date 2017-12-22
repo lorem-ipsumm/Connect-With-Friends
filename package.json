@@ -1,0 +1,17 @@
+{
+  "name": "connectserver",
+  "version": "1.0.0",
+  "description": "p2p Connect 4 Server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Nick Morris",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2",
+    "socket.io": "*",
+    "socket.io-p2p": "^2.2.0",
+    "socket.io-p2p-server": "^1.2.0"
+  }
+}

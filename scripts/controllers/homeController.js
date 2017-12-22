@@ -14,7 +14,8 @@ angular.module('main').controller('homeController',function($scope,$rootScope){
             
             //Is called when host responds to guest
             $rootScope.socket.on('request',function(data){
-                
+                $rootScope.playing = true;
+                $rootScope.requested = true;
                 //If the data is an array, setup match
                 //Data = guestId
                 //[hostId,guestId,hostTurn,color]
@@ -30,7 +31,7 @@ angular.module('main').controller('homeController',function($scope,$rootScope){
                     else
                         $rootScope.color = 'red';
                     
-                        $rootScope.playing = true;
+                    
                     document.location.href = "../#!/game";
                 }else if(data[0] == false){
                     $scope.message.innerHTML = "It Looks Like Your Friend Is Busy :/";
@@ -54,7 +55,6 @@ angular.module('main').controller('homeController',function($scope,$rootScope){
         //Gets id of guest
         $rootScope.socket.on('request',function(data){
             //If host is not in a game, allow game request
-            console.log(data);
             if($rootScope.requested == false){
                 $rootScope.requested = true;
                 var chooseTurn = Math.floor(Math.random() * (3-1) + 1);

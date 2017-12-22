@@ -1,6 +1,7 @@
 angular.module('main').controller('gameController',function($scope,$rootScope){
     $scope.indicator = document.getElementsByClassName("indicator")[0];
     $scope.shareMessage = document.getElementById("share");
+    $scope.shareCode = document.getElementsByClassName('share-code')[0];
     $scope.connection;
     $scope.message = document.getElementsByClassName('message')[0];
     $scope.id = "loading";
@@ -16,14 +17,8 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
     
 
     
-    //Set shareable id
-    $scope.id = $rootScope.id;
 
-    //Set Colors
-    if($rootScope.color == 'red')
-        $scope.indicator.style.backgroundColor = "#ff6868";                       
-    else
-        $scope.indicator.style.backgroundColor = "#fffc82";
+    
     
     //Slide indicator
     $scope.spotHovered = function(x){
@@ -41,14 +36,14 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
     }
 
     
-    //If user loads from the game page go through everything from the home page
+    //If user loads from the game page, go through everything from the home page
     if($rootScope.playing == false || $rootScope.playing == undefined){
         $rootScope.socket = io('https://connect-with-friends.herokuapp.com' , {secure: true, rejectUnauthorized: false});
         
         $rootScope.socket.on('get-id',function(data){
             $rootScope.id = data;
             $scope.id = $rootScope.id;
-            $scope.$apply();
+            $scope.shareCode.innerHTML = $rootScope.id;
         });
 
         //Gets id of guest
@@ -144,8 +139,13 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
     }
 
     $scope.initializeListeners = function(){
+        $scope.shareMessage.style.opacity = "0";
         $scope.userPlacement = new Audio('assets/userPlacement.wav');
         $scope.friendPlacement = new Audio('assets/friendPlacement.wav');
+        if($rootScope.color == 'red')
+            $scope.indicator.style.backgroundColor = "#ff6868";                       
+        else
+            $scope.indicator.style.backgroundColor = "#fffc82";
 
         
         $rootScope.socket.on('turn-over',function(data){

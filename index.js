@@ -1,10 +1,11 @@
-var express = require('express');
-var app = express();
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
+var express = require('express'),
+    app = express(),
+    server = require('http').createServer(app),
+    io = require('socket.io').listen(server);
 
+server.listen(process.env.PORT || 3000);
 
-
+//setInterval(() => io.emit('time', new Date().toTimeString()), 5000);
 
 io.on('connection',function(socket){
     console.log("new connection");
@@ -35,8 +36,4 @@ io.on('connection',function(socket){
     socket.on('win',function(data){
       socket.to(data[2]).emit('win',data);
     });
-});
-
-server.listen(process.env.PORT || 5000,function(){
-  console.log("listening on PORT: " + process.env.PORT);
 });

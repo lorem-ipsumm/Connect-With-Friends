@@ -164,6 +164,8 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
 
         $rootScope.socket.on('leave',function(data){
             $scope.message.innerHTML = "YOUR FRIEND DISCONNECTED :(";
+            $scope.turn = false;
+            $scope.playing = false;
         });
         
         

@@ -76,6 +76,10 @@ body {
   box-shadow: 0px 2px 5px black;
 }
 
+.control-wrapper .info-message {
+  color: #ff6868;
+}
+
 .control-wrapper input {
   transition: all ease .5s;
   text-align: center;

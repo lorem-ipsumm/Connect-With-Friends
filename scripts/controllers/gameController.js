@@ -55,7 +55,8 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
         //Gets id of guest
         $rootScope.socket.on('request',function(data){
             //If host is not in a game, allow game request
-            if($rootScope.playing == false || $rootScope.playing == undefined){
+            if($rootScope.requested == false || $rootScope.requested == undefined){
+                $rootScope.requested = true;
                 var chooseTurn = Math.floor(Math.random() * (3-1) + 1);
                 var color = Math.floor(Math.random() * (3-1) + 1);
                 var color = "yellow";
@@ -72,11 +73,14 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
                 else
                     $rootScope.color = "yellow";
 
+                
                 $scope.playing = true;
                 $rootScope.friend = data;
-                $rootScope.socket.emit('request',[$rootScope.id,data,turn,color]);
                 $scope.initializeListeners();
                 $scope.playGame();
+                $rootScope.socket.emit('request',[$rootScope.id,data,turn,color]);
+            }else{
+                $rootScope.socket.emit('request',[false,data]);
             }
         })
     };
@@ -217,159 +221,4 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
                 $scope.playGame();
         }
     };
-
-    
-    
-
-
-    /*
-    
-    
-
-    
-    $scope.checkWin = function(){
-        var width = 7;
-        var height = 6;
-        for(var i = 0; i < height; i++){
-            for(var j = 0;j < width; j++){
-                if($scope.map[i][j] == 0)
-                    continue;
-
-                var color = $scope.map[i][j];
-
-                if(
-                    j+3 < width &&
-                    $scope.map[i][j+1] == color &&
-                    $scope.map[i][j+2] == color &&
-                    $scope.map[i][j+3] == color)
-                    return color;
-                
-                if(i+3 < height){
-                    if(
-                        $scope.map[i+1][j] == color &&
-                        $scope.map[i+2][j] == color &&
-                        $scope.map[i+3][j] == color)
-                        return color;
-
-                    if(
-                        $scope.map[i+1][j+1] == color &&
-                        $scope.map[i+2][j+2] == color &&
-                        $scope.map[i+3][j+3] == color)
-                        return color;
-
-                    if(
-                        $scope.map[i+1][j-1] == color &&
-                        $scope.map[i+2][j-2] == color &&
-                        $scope.map[i+3][j-3] == color)
-                        return color;
-                        
-                }
-            }
-        }
-        return 0;
-    };
-
-
-    
-
-
-    $scope.spotHovered = function(x){
-        $scope.indicator.style.transform = "translateX(" + 80*(x-1) +"px)";
-    };
-
-    
-    $scope.peer.on('open', function(id) {
-        $scope.id = id;
-        $scope.$apply();
-    });
-    
-    
-
-
-    $scope.updateGame = function(data){
-        var x = data[0];
-        var y = data[1];
-        
-        if($rootScope.color == 'red'){
-            document.getElementById((x+1) + "-" + (y+1)).style.backgroundColor = "#fffc82";
-            $scope.map[y][x] = 2;
-        }else{
-            document.getElementById((x+1) + "-" + (y+1)).style.backgroundColor = "#ff6868";
-            $scope.map[y][x] = 1;
-        }
-        
-    }
-
-
-    //Game Loop
-    $scope.playGame = function(){
-        if($rootScope.color == "red")
-            $scope.indicator.style.backgroundColor = "#ff6868";
-        else
-            $scope.indicator.style.backgroundColor = "#fffc82";
-        
-        
-
-        if($rootScope.turn){
-            message.innerHTML = "IT'S YOUR TURN!";
-        }else{
-            message.innerHTML = "IT'S YOUR FRIENDS TURN!";
-        }
-
-    };
-
-
-    //Host Connection
-    $scope.peer.on('connection',function(connection){
-        $rootScope.connection = connection;
-        $rootScope.connection.on('data',function(data){
-            if(data == "play request"){
-                $scope.chooseTurn = Math.floor(Math.random() * (3-1) + 1);
-                if($scope.chooseTurn == 2){
-                    $rootScope.turn = false;
-                    $rootScope.color = 'red';
-                }else{
-                    $rootScope.turn = true;
-                    $rootScope.color = 'yellow'
-                }
-    
-                $rootScope.connection.send($scope.chooseTurn);
-                $rootScope.playing = true;
-                console.log("host ready");
-                $scope.playGame();
-            }else if(Array.isArray(data) && data[0] != "win"){
-                $scope.updateGame(data);
-                
-                $rootScope.turn = true;
-                $scope.playGame();
-            }else if(data[0] == "win"){
-                var data = data[1];
-                $scope.updateGame(data);
-                message.innerHTML = "YOU LOST! :(";
-                $rootScope.playing = false;
-                $scope.$apply();
-            }
-        });
-    });
-
-    //Guest
-    if($rootScope.playing == true){
-        $scope.playGame();
-        $rootScope.connection.on('data',function(data){
-            if(Array.isArray(data) && data[0] != "win"){
-                $scope.updateGame(data);
-                $rootScope.turn = true;
-                $scope.playGame();
-            }else if(data[0] == "win"){
-                var data = data[1];
-                $scope.updateGame(data);
-                console.log("game");
-                message.innerHTML = "YOU LOST! :(";
-                $rootScope.playing = false;
-                $scope.$apply();
-            }
-        });
-    }
-
-    */
 });

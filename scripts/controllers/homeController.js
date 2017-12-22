@@ -1,6 +1,8 @@
 angular.module('main').controller('homeController',function($scope,$rootScope){
     $scope.input;
     $rootScope.playing = false;
+    $rootScope.requested = false;
+    $scope.message = document.getElementsByClassName('info-message')[0];
 
     $scope.keyPressed = function(e){
         if(e.key == "Enter"){
@@ -11,10 +13,11 @@ angular.module('main').controller('homeController',function($scope,$rootScope){
             
             //Is called when host responds to guest
             $rootScope.socket.on('request',function(data){
+                console.log(data);
                 //If the data is an array, setup match
                 //Data = guestId
                 //[hostId,guestId,hostTurn,color]
-                if(Array.isArray(data)){
+                if(data[0] != false){
                     $rootScope.friend = data[0];
                     if(data[2] == true)
                         $rootScope.turn = false;
@@ -28,33 +31,12 @@ angular.module('main').controller('homeController',function($scope,$rootScope){
                     
                         $rootScope.playing = true;
                     document.location.href = "../#!/game";
-                }else if(data == false){
-                    console.log("This player is busy!");
+                }else if(data[0] == false){
+                    $scope.message.innerHTML = "It Looks Like Your Friend Is Busy :/";
                 }
             });
             
-            document.getElementsByClassName("loading-wrapper")[0].style.display = "flex";
             
-            /*$rootScope.connection = $scope.peer.connect($scope.input);
-            $rootScope.connection.on('open', function(){
-                $rootScope.connection.send("play request");
-            });
-
-            $rootScope.connection.on('data',function(data){
-                if(data == 2 || data == 1){
-                    if(data == 2){
-                        $rootScope.turn = true;
-                        $rootScope.color = 'yellow';
-                    }else{
-                        $rootScope.turn = false;
-                        $rootScope.color = 'red';
-                    }
-                    console.log("guest ready");
-                    $rootScope.playing = true;
-                    document.location.href = "../#!/game";
-                }
-            });
-            */
         }
     }
 
@@ -70,7 +52,9 @@ angular.module('main').controller('homeController',function($scope,$rootScope){
         //Gets id of guest
         $rootScope.socket.on('request',function(data){
             //If host is not in a game, allow game request
-            if($rootScope.playing == false){
+            console.log(data);
+            if($rootScope.requested == false){
+                $rootScope.requested = true;
                 var chooseTurn = Math.floor(Math.random() * (3-1) + 1);
                 var color = Math.floor(Math.random() * (3-1) + 1);
                 var color = "yellow";
@@ -90,10 +74,13 @@ angular.module('main').controller('homeController',function($scope,$rootScope){
                 
                 
                 $rootScope.socket.emit('request',[$rootScope.id,data,turn,color]);
+            }else{
+                $rootScope.socket.emit('request',[false,data]);
             }
         })
     }
     
+    /*
     var functionBasedDelay = anime({
         targets: '.letter',
         translateY: 5,
@@ -101,5 +88,6 @@ angular.module('main').controller('homeController',function($scope,$rootScope){
         direction: 'alternate',
         loop: true,
       });
+    */
       
 });

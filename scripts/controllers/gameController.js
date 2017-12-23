@@ -119,6 +119,8 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
         return 0;
     };
     
+
+    //Update game array and client board
     $scope.updateGame = function(data){
         
         var x = data[0];
@@ -135,6 +137,8 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
         $scope.friendPlacement.play();
     }
 
+
+    //Initialize Listeners and other things
     $scope.initializeListeners = function(){
         $scope.shareMessage.style.opacity = "0";
         $scope.userPlacement = new Audio('assets/userPlacement.wav');
@@ -183,7 +187,7 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
         //1 = Red
         //2 = Yellow
         if($rootScope.turn){
-            $scope.userPlacement.play();
+            
             var id = el.target.id;
             var x = id.substring(0,1) - 1;
             var y = id.substring(2) - 1;
@@ -199,6 +203,7 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
                         document.getElementById((x+1) + "-" + (i+1)).style.backgroundColor = "#fffc82";
                         $scope.map[i][x] = 2;
                     }
+                    $scope.userPlacement.play();
 
                     
                     var win = $scope.checkWin();
@@ -223,6 +228,7 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
                     
                     break;
                 }
+                //$rootScope.socket.emit('tie',[x,i,$rootScope.friend]);
             }
             if(win == 0 && $rootScope.playing == true)
                 $scope.playGame();

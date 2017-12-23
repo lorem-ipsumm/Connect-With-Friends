@@ -1,1 +1,14 @@
-/* No CSS *//*# sourceMappingURL=resize.css.map */
+@media screen and (max-width: 480px) {
+  .home-wrapper .title-wrapper span:first-child {
+    font-size: 13vw !important;
+  }
+  .home-wrapper .title-wrapper span:last-child {
+    font-size: 9vw !important;
+  }
+  .info-wrapper span {
+    font-size: 1.2rem;
+    font-family: 'Raleway', sans-serif;
+    margin: 0px 15px;
+  }
+}
+/*# sourceMappingURL=resize.css.map */

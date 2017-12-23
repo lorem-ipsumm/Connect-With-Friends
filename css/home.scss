@@ -34,22 +34,23 @@ body{
     background-color: #33383d;
 }
 
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
 
 //Main Container
 .home-wrapper{
-    position: fixed;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 90%;
-    height: 500px;
     text-align: center;
     .title-wrapper{
         width: 100%;
         text-align: center;
         span{
+            transition: all ease 0.5s;
             font-family: 'Raleway', sans-serif;
             color: white;
             &:first-child{
@@ -68,11 +69,13 @@ body{
 
 //Controls
 .control-wrapper{
-    margin-top: 5em;
+    margin-top: 2em;
+    padding: 0 5px;
     button, input, span{
         font-family: 'Raleway', sans-serif;
         width: 300px;
         height:50px;
+        width: 100%;
         margin: 1em 0px;
     }
     span{
@@ -87,6 +90,7 @@ body{
         background-color: white;
         border-radius: 5px;
         font-size: 1.5rem;
+        
         border: none;
         transition: all ease .3s;
         &:hover{

@@ -25,9 +25,18 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
     //Game Loop?
     $scope.playGame = function(){
         if($rootScope.turn == true){
-            $scope.message.innerHTML = "IT'S YOUR TURN!";
+            $scope.message.innerHTML = "YOUR TURN!";
+            if($rootScope.color == "red")
+                $scope.message.style.color = "#ff6868";
+            else
+                $scope.message.style.color = "#fffc82";
+            
         }else{
-            $scope.message.innerHTML = "IT'S YOUR FRIEND'S TURN!";
+            $scope.message.innerHTML = "YOUR FRIEND'S TURN!";
+            if($rootScope.color == "red")
+                $scope.message.style.color = "#fffc82";
+            else
+                $scope.message.style.color = "#ff6868";
         }
     }
 
@@ -178,7 +187,7 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
     //Reset all important variables
     $scope.resetVariables = function(){
         $rootScope.turn = false;
-        $rootScope.color = undefined;
+        //$rootScope.color = undefined;
         $rootScope.playing = false;
         $rootScope.friend = undefined;
         $rootScope.id = undefined;

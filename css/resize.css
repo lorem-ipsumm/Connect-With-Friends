@@ -13,6 +13,9 @@
   .text-wrapper .message {
     font-size: 8vw !important;
   }
+  .text-wrapper #share {
+    font-size: 4.5vw !important;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -22,12 +25,6 @@
   }
   .indicator {
     display: none;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .board {
-    margin-top: 10vw !important;
   }
 }
 /*# sourceMappingURL=resize.css.map */

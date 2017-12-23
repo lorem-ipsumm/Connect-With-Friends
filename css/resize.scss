@@ -24,6 +24,10 @@
         .message{
             font-size: 8vw !important;
         }
+
+        #share{
+            font-size: 4.5vw !important;
+        }
     }
 
     
@@ -44,6 +48,6 @@
 
 @media screen and (max-width: 500px){
     .board{
-        margin-top: 10vw !important;
+        //margin-top: 2em !important;
     }
 }

@@ -113,5 +113,30 @@ html {
   border-radius: 100px;
   position: relative;
   border: 3px solid #003a6d;
+  overflow: hidden;
+}
+
+.main-wrapper .board-wrapper .board .column .spot:after {
+  transition: top 0s;
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  position: absolute;
+  top: -100%;
+  left: 0;
+  border-radius: 100%;
+}
+
+.main-wrapper .board-wrapper .board .column .spot:hover:after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  border-radius: 100%;
+  transition: top 0.3s;
 }
 /*# sourceMappingURL=game.css.map */

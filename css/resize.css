@@ -1,1 +1,27 @@
-/* No CSS *//*# sourceMappingURL=resize.css.map */
+@media screen and (max-height: 800px) {
+  .indicator-wrapper {
+    padding: 10px 13px !important;
+    width: 550px !important;
+  }
+  .indicator-wrapper .indicator {
+    height: 64px !important;
+    width: 64px !important;
+  }
+  .board {
+    width: 550px !important;
+    height: 460px !important;
+  }
+  .board .column {
+    width: 13% !important;
+  }
+  .board .column .spot {
+    height: 64px !important;
+  }
+  .text-wrapper span:first-child {
+    font-size: 5vh !important;
+  }
+  .text-wrapper span:last-child {
+    font-size: 3vh !important;
+  }
+}
+/*# sourceMappingURL=resize.css.map */

@@ -22,7 +22,8 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
     
     //Slide indicator
     $scope.spotHovered = function(x){
-        $scope.indicator.style.transform = "translateX(" + 80*(x-1) +"px)";
+        var width = Number($scope.indicator.clientWidth);
+        $scope.indicator.style.transform = "translateX(" + (width+13)*(x-1) +"px)";
     };
 
 

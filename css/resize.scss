@@ -1,3 +1,31 @@
 @media screen and ( max-height: 800px ){
-    
+    .indicator-wrapper{
+        padding: 10px 13px !important;
+        width: 550px !important;
+        .indicator{
+            height: 64px !important;
+            width: 64px !important;
+        }
+    }
+    .board{
+        width: 550px !important;
+        height: 460px !important;
+        .column{
+            width: 13% !important;
+            .spot{
+                height: 64px !important;
+            }
+        }
+    }
+
+    .text-wrapper{
+        span{
+            &:first-child{
+                font-size: 5vh !important;
+            }
+            &:last-child{
+                font-size: 3vh !important;
+            }
+        }
+    }
 }

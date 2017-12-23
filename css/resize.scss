@@ -19,4 +19,31 @@
             margin: 0px 15px;
         }
     }
+
+    .text-wrapper{
+        .message{
+            font-size: 8vw !important;
+        }
+    }
+
+    
+}
+
+
+@media screen and (max-width: 600px){
+    .board{
+        width: 99vw !important;
+        //width: (7/6)*20vh !important;
+        height: (6/7)*99vw !important;
+    }
+
+    .indicator{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .board{
+        margin-top: 10vw !important;
+    }
 }

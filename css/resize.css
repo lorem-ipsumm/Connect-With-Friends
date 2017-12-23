@@ -10,5 +10,24 @@
     font-family: 'Raleway', sans-serif;
     margin: 0px 15px;
   }
+  .text-wrapper .message {
+    font-size: 8vw !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .board {
+    width: 99vw !important;
+    height: 84.85714vw !important;
+  }
+  .indicator {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .board {
+    margin-top: 10vw !important;
+  }
 }
 /*# sourceMappingURL=resize.css.map */

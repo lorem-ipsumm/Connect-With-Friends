@@ -2,7 +2,6 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
     $scope.indicator = document.getElementsByClassName("indicator")[0];
     $scope.shareMessage = document.getElementById("share");
     $scope.shareCode = document.getElementsByClassName('share-code')[0];
-    $scope.connection;
     $scope.message = document.getElementsByClassName('message')[0];
     $scope.board = document.getElementsByClassName('board')[0];
     $scope.id = "loading";
@@ -28,7 +27,7 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
         if($rootScope.turn == true){
             $scope.message.innerHTML = "IT'S YOUR TURN!";
         }else{
-            $scope.message.innerHTML = "IT'S YOUR FRIENDS TURN!";
+            $scope.message.innerHTML = "IT'S YOUR FRIEND'S TURN!";
         }
     }
 
@@ -161,6 +160,7 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
             
             $scope.updateGame([data[0],data[1]]);
             $scope.message.innerHTML = "YOU LOST :(";
+            $scope.resetVariables();
         });
 
         $rootScope.socket.on('leave',function(data){
@@ -175,6 +175,18 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
         
     }
     
+    //Reset all important variables
+    $scope.resetVariables = function(){
+        $rootScope.turn = false;
+        $rootScope.color = undefined;
+        $rootScope.playing = false;
+        $rootScope.friend = undefined;
+        $rootScope.id = undefined;
+        $rootScope.socket = undefined;
+        
+    };
+
+    //Guest entry point
     if($rootScope.playing == true){
         $scope.initializeListeners();
         $scope.playGame();
@@ -211,9 +223,8 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
                     if(win > 0){
                         
                         $scope.message.innerHTML = "YOU WON! :)";
-                        $rootScope.playing = false;
-                        $rootScope.turn = false;
                         $rootScope.socket.emit('win',[x,i,$rootScope.friend]);
+                        $scope.resetVariables();
                         break;
                     }
                     

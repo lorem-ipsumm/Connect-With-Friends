@@ -74,12 +74,12 @@ html{
         text-align: center;
         //padding: 50px;
         .indicator-wrapper{
-            width: 600px;
+            width: (7/6)*60vh;
             margin: auto;
-            padding: 10px 24px;
+            padding: 10px 21px;
             .indicator{
-                width: 68px;
-                height: 68px;
+                width: 7.5vh;
+                height: 7.5vh;
                 background-color: $red;
                 //opacity: .7;
                 border-radius: 100px;
@@ -90,12 +90,12 @@ html{
         
         .board{
             display: flex;
-            width: 600px;
-            height: 500px;
+            width: (7/6)*60vh;
+            height: 60vh;
             background-color: #0173D4;
             border-radius: 5px;
             margin: auto;
-            padding: 2px 2px;
+            padding: 10px 10px;
             
             
             justify-content: center;
@@ -106,7 +106,7 @@ html{
                 display: flex;
                 flex-direction: column;
                 height: 100%;
-                width: 68px;
+                width: 14%;
                 //background-color: black;
                 margin: 0px 6px;
                 justify-content: center;
@@ -114,7 +114,7 @@ html{
                 
                 .spot{
                     width: 100%;
-                    height: 68px;
+                    height: 50vh;
                     margin: 5px 0px;
                     cursor: pointer;
                     background-color: #33383d;

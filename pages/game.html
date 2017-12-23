@@ -21,7 +21,7 @@
         <div class="board">
             
             <div class="column" ng-repeat="i in [1,2,3,4,5,6,7]">
-                <div class="spot" id="{{i}}-{{j}}" ng-repeat="j in [1,2,3,4,5,6]" ng-mouseover="spotHovered(i)"  ng-click = "spotClicked($event)">
+                <div class="spot" id="{{i}}-{{j}}" ng-repeat="j in [1,2,3,4,5,6]" ng-mouseover="spotHovered(i,$event)"  ng-click = "spotClicked($event)">
 
                 </div>
             </div>

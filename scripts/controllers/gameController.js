@@ -4,6 +4,7 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
     $scope.shareCode = document.getElementsByClassName('share-code')[0];
     $scope.connection;
     $scope.message = document.getElementsByClassName('message')[0];
+    $scope.board = document.getElementsByClassName('board')[0];
     $scope.id = "loading";
     $scope.map = [
         [0,0,0,0,0,0,0],
@@ -15,15 +16,10 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
     ];
 
     
-
-    
-
-    
-    
     //Slide indicator
-    $scope.spotHovered = function(x){
-        var width = Number($scope.indicator.clientWidth);
-        $scope.indicator.style.transform = "translateX(" + (width+13)*(x-1) +"px)";
+    $scope.spotHovered = function(x,e){
+        //This is temporary and only looks like it works.
+        $scope.indicator.style.transform = "translateX(" + ($scope.indicator.clientWidth*(7/5.45))*(x-1) +"px)";
     };
 
 

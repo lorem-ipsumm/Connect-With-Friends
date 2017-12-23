@@ -67,14 +67,14 @@ html {
 }
 
 .main-wrapper .board-wrapper .indicator-wrapper {
-  width: 600px;
+  width: 70vh;
   margin: auto;
-  padding: 10px 24px;
+  padding: 10px 21px;
 }
 
 .main-wrapper .board-wrapper .indicator-wrapper .indicator {
-  width: 68px;
-  height: 68px;
+  width: 7.5vh;
+  height: 7.5vh;
   background-color: #ff6868;
   border-radius: 100px;
   transition: all ease .3s;
@@ -82,12 +82,12 @@ html {
 
 .main-wrapper .board-wrapper .board {
   display: flex;
-  width: 600px;
-  height: 500px;
+  width: 70vh;
+  height: 60vh;
   background-color: #0173D4;
   border-radius: 5px;
   margin: auto;
-  padding: 2px 2px;
+  padding: 10px 10px;
   justify-content: center;
   border: 5px solid #005196;
   border-top: 5px solid #003a6d;
@@ -98,7 +98,7 @@ html {
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 68px;
+  width: 14%;
   margin: 0px 6px;
   justify-content: center;
   align-items: center;
@@ -106,7 +106,7 @@ html {
 
 .main-wrapper .board-wrapper .board .column .spot {
   width: 100%;
-  height: 68px;
+  height: 50vh;
   margin: 5px 0px;
   cursor: pointer;
   background-color: #33383d;

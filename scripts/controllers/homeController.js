@@ -3,11 +3,14 @@ angular.module('main').controller('homeController',function($scope,$rootScope){
     $rootScope.playing = false;
     $rootScope.requested = false;
     $scope.message = document.getElementsByClassName('info-message')[0];
-    
+    $rootScope.testing = false;
 
     $scope.keyPressed = function(e){
         if(e.key == "Enter"){
-            $rootScope.socket = io('https://connect-with-friends.herokuapp.com', {secure: true, rejectUnauthorized: false});
+            if($rootScope.testing == false)
+                $rootScope.socket = io('https://connect-with-friends.herokuapp.com' , {secure: true, rejectUnauthorized: false});
+            else
+                $rootScope.socket = io('localhost:3000' , {secure: true, rejectUnauthorized: false});
             
             //Request to play with user with specified id
             $rootScope.socket.emit('request',$scope.input);
@@ -44,7 +47,11 @@ angular.module('main').controller('homeController',function($scope,$rootScope){
 
 
     $rootScope.newGame = function(){
-        $rootScope.socket = io('https://connect-with-friends.herokuapp.com', {secure: true, rejectUnauthorized: false});
+        if($rootScope.testing == false){
+            $rootScope.socket = io('https://connect-with-friends.herokuapp.com' , {secure: true, rejectUnauthorized: false});
+        }else{
+            $rootScope.socket = io('http://localhost:3000' , {secure: true, rejectUnauthorized: false});
+        }
         
         //globalAgent.options.rejectUnauthorized = false; 
         $rootScope.socket.on('get-id',function(data){

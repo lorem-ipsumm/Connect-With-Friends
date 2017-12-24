@@ -6,7 +6,6 @@ var io = require('socket.io').listen(server);
 
 server.listen(process.env.PORT || 3000);
 
-
 //setInterval(() => io.emit('time', new Date().toTimeString()), 5000);
 app.use("/", express.static(__dirname + '/'));
 app.get('/', function(req, res){
@@ -14,7 +13,6 @@ app.get('/', function(req, res){
 });
 
 io.on('connection',function(socket){
-
     //give ids to new users
     socket.emit("get-id",socket.id);
 
@@ -38,6 +36,7 @@ io.on('connection',function(socket){
 
     //Relay that the turn is over
     socket.on('turn-over',function(data){
+      console.log(data);
       socket.to(data[2]).emit('turn-over',[data[0],data[1]]);
     });
 

@@ -43,10 +43,7 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
     
     //If user loads from the game page, go through everything from the home page
     if($rootScope.playing == false || $rootScope.playing == undefined){
-        if($rootScope.testing == false)
-            $rootScope.socket = io('https://connect-with-friends.herokuapp.com' , {secure: true, rejectUnauthorized: false});
-        else
-            $rootScope.socket = io('localhost:3000' , {secure: true, rejectUnauthorized: false});
+        $rootScope.socket = io('https://connect-with-friends.herokuapp.com' , {secure: true, rejectUnauthorized: false});
         
         $rootScope.socket.on('get-id',function(data){
             $rootScope.id = data;

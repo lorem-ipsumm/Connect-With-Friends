@@ -22,7 +22,8 @@ io.on('connection',function(socket){
 
 
     socket.on('get-id',function(data){
-      socket.to(socket.id).emit('get-id',socket.id);
+      console.log(socket.id);
+      socket.emit('get-id',socket.id);
     });
 
 
@@ -31,6 +32,7 @@ io.on('connection',function(socket){
       //Data = host id
       //Sends id of guest to host
       socket.to(data).emit("request",socket.id);
+      
 
       //From host to guest with game setup
       if(Array.isArray(data)){

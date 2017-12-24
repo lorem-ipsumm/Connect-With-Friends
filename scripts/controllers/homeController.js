@@ -16,6 +16,7 @@ angular.module('main').controller('homeController',function($scope,$rootScope){
             $rootScope.socket.on('request',function(data){
                 $rootScope.playing = true;
                 $rootScope.requested = true;
+                $rootScope.id = data[1];
                 //If the data is an array, setup match
                 //[hostId,guestId,hostTurn,color]
                 if(data[0] != false){
@@ -41,6 +42,7 @@ angular.module('main').controller('homeController',function($scope,$rootScope){
 
 
     $rootScope.newGame = function(){
+        //https://connect-with-friends.herokuapp.com
         $rootScope.socket = io('https://connect-with-friends.herokuapp.com', {secure: true, rejectUnauthorized: false});
         
         //Request id from server
@@ -51,45 +53,5 @@ angular.module('main').controller('homeController',function($scope,$rootScope){
             $rootScope.id = data;
             document.location.href = "../#!/game";
         });
-
-        //Gets id of guest
-        $rootScope.socket.on('request',function(data){
-            //If host is not in a game, allow game request
-            if($rootScope.requested == false){
-                $rootScope.requested = true;
-                var chooseTurn = Math.floor(Math.random() * (3-1) + 1);
-                var color = Math.floor(Math.random() * (3-1) + 1);
-                var color = "yellow";
-
-                if(chooseTurn == 1){
-                    turn = true;
-                    $rootScope.turn = true;
-                }else{
-                    turn = false;
-                    $rootScope.turn = false;
-                }
-                if(color == 1)
-                    $rootScope.color = "red";
-                else
-                    $rootScope.color = "yellow";
-
-                
-                
-                $rootScope.socket.emit('request',[$rootScope.id,data,turn,color]);
-            }else{
-                $rootScope.socket.emit('request',[false,data]);
-            }
-        })
     }
-    
-    /*
-    var functionBasedDelay = anime({
-        targets: '.letter',
-        translateY: 5,
-        rotate: 360,
-        direction: 'alternate',
-        loop: true,
-      });
-    */
-      
 });

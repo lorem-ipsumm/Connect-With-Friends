@@ -4,6 +4,7 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
     $scope.shareCode = document.getElementsByClassName('share-code')[0];
     $scope.message = document.getElementsByClassName('message')[0];
     $scope.board = document.getElementsByClassName('board')[0];
+    $scope.initialized = false;
     $scope.id = "loading";
     $scope.map = [
         [0,0,0,0,0,0,0],
@@ -21,6 +22,8 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
         $scope.indicator.style.transform = "translateX(" + ($scope.indicator.clientWidth*(7/5.45))*(x-1) +"px)";
     };
 
+
+    $scope.shareCode.innerHTML = $rootScope.id;
 
     //Game Loop?
     $scope.playGame = function(){
@@ -40,9 +43,7 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
         }
     }
 
-    
-    //If user loads from the game page, go through everything from the home page
-    if($rootScope.playing == false || $rootScope.playing == undefined){
+    $scope.getID = function(){
         $rootScope.socket = io('https://connect-with-friends.herokuapp.com' , {secure: true, rejectUnauthorized: false});
         
 
@@ -54,6 +55,14 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
             $rootScope.id = data;
             $scope.shareCode.innerHTML = data;
         });
+    };
+
+    
+    //If user loads from the game page, go through everything from the home page
+    if($rootScope.id == undefined && $rootScope.playing == undefined){
+        //This is dumb, but it works
+        $rootScope.id = "";
+        $scope.getID();
 
 
         //Gets id of guest
@@ -143,7 +152,6 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
             document.getElementById((x+1) + "-" + (y+1)).style.backgroundColor = "#fffc82";
             $scope.map[y][x] = 2;
         }else{
-            
             document.getElementById((x+1) + "-" + (y+1)).style.backgroundColor = "#ff6868";
             $scope.map[y][x] = 1;
         }
@@ -151,9 +159,15 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
     }
 
 
+    //TODO: The steup code is in two seperate places. fix that and point them here
+    $scope.gameSetup = function(){
+
+    };
+
+
     //Initialize Listeners and other things
     $scope.initializeListeners = function(){
-        //$scope.shareMessage.style.opacity = "0";
+        $scope.shareMessage.style.opacity = "0";
         $scope.userPlacement = new Audio('assets/userPlacement.wav');
         $scope.friendPlacement = new Audio('assets/friendPlacement.wav');
         if($rootScope.color == 'red')
@@ -182,12 +196,22 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
             $rootScope.turn = false;
             $rootScope.playing = false;
         });
-
-        
-        
-        
-        
     }
+
+    //Guest entry point
+    if($rootScope.id != undefined && $rootScope.playing == true){
+        $scope.initializeListeners();
+        $scope.playGame();
+    }
+
+    //Host entry point
+    if($rootScope.id != undefined && $rootScope.playing == false){
+        console.log("here");
+        $rootScope.socket.on('request',function(data){
+            
+        });
+    }
+
     
     //Reset all important variables
     $scope.resetVariables = function(){
@@ -197,14 +221,10 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
         $rootScope.friend = undefined;
         $rootScope.id = undefined;
         $rootScope.socket = undefined;
-        
+        $rootScope.requested = false;
     };
 
-    //Guest entry point
-    if($rootScope.playing == true){
-        $scope.initializeListeners();
-        $scope.playGame();
-    }
+    
     
 
     $scope.spotClicked = function(el){

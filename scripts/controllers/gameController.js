@@ -45,12 +45,16 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
     if($rootScope.playing == false || $rootScope.playing == undefined){
         $rootScope.socket = io('https://connect-with-friends.herokuapp.com' , {secure: true, rejectUnauthorized: false});
         
+
+        //Request id from server
+        $rootScope.socket.emit('get-id',null);
+
+        //Server sends id
         $rootScope.socket.on('get-id',function(data){
-            if($rootScope.id == undefined){
-                $rootScope.id = data;
-                $scope.shareCode.innerHTML = data;
-            }
+            $rootScope.id = data;
+            $scope.shareCode.innerHTML = data;
         });
+
 
         //Gets id of guest
         $rootScope.socket.on('request',function(data){

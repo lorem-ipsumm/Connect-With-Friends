@@ -17,7 +17,6 @@ angular.module('main').controller('homeController',function($scope,$rootScope){
                 $rootScope.playing = true;
                 $rootScope.requested = true;
                 //If the data is an array, setup match
-                //Data = guestId
                 //[hostId,guestId,hostTurn,color]
                 if(data[0] != false){
                     $rootScope.friend = data[0];
@@ -44,6 +43,10 @@ angular.module('main').controller('homeController',function($scope,$rootScope){
     $rootScope.newGame = function(){
         $rootScope.socket = io('https://connect-with-friends.herokuapp.com', {secure: true, rejectUnauthorized: false});
         
+        //Request id from server
+        $rootScope.socket.emit('get-id',null);
+
+        //Server sends id
         $rootScope.socket.on('get-id',function(data){
             $rootScope.id = data;
             document.location.href = "../#!/game";

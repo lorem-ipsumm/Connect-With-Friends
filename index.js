@@ -14,10 +14,15 @@ app.get('/', function(req, res){
 
 io.on('connection',function(socket){
     //give ids to new users
-    socket.emit("get-id",socket.id);
+    //socket.emit("get-id",socket.id);
 
     socket.on('leave',function(data){
       socket.to(data).emit('leave',null);
+    });
+
+
+    socket.on('get-id',function(data){
+      socket.to(socket.id).emit('get-id',socket.id);
     });
 
 

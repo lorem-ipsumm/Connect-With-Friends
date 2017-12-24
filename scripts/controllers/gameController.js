@@ -206,9 +206,35 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
 
     //Host entry point
     if($rootScope.id != undefined && $rootScope.playing == false){
-        console.log("here");
         $rootScope.socket.on('request',function(data){
-            
+            //If host is not in a game, allow game request
+            if($rootScope.requested == false || $rootScope.requested == undefined){
+                $rootScope.requested = true;
+                var chooseTurn = Math.floor(Math.random() * (3-1) + 1);
+                var color = Math.floor(Math.random() * (3-1) + 1);
+                var color = "yellow";
+
+                if(chooseTurn == 1){
+                    turn = true;
+                    $rootScope.turn = true;
+                }else{
+                    turn = false;
+                    $rootScope.turn = false;
+                }
+                if(color == 1)
+                    $rootScope.color = "red";
+                else
+                    $rootScope.color = "yellow";
+
+                
+                $scope.playing = true;
+                $rootScope.friend = data;
+                $scope.initializeListeners();
+                $scope.playGame();
+                $rootScope.socket.emit('request',[$rootScope.id,data,turn,color]);
+            }else{
+                $rootScope.socket.emit('request',[false,data]);
+            }
         });
     }
 

@@ -46,8 +46,10 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
         $rootScope.socket = io('https://connect-with-friends.herokuapp.com' , {secure: true, rejectUnauthorized: false});
         
         $rootScope.socket.on('get-id',function(data){
-            $rootScope.id = data;
-            $scope.shareCode.innerHTML = data;
+            if($rootScope.id != undefined){
+                $rootScope.id = data;
+                $scope.shareCode.innerHTML = data;
+            }
         });
 
         //Gets id of guest

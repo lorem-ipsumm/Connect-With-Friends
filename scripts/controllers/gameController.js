@@ -46,7 +46,7 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
         $rootScope.socket = io('https://connect-with-friends.herokuapp.com' , {secure: true, rejectUnauthorized: false});
         
         $rootScope.socket.on('get-id',function(data){
-            if($rootScope.id != undefined){
+            if($rootScope.id == undefined){
                 $rootScope.id = data;
                 $scope.shareCode.innerHTML = data;
             }

@@ -47,8 +47,7 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
         
         $rootScope.socket.on('get-id',function(data){
             $rootScope.id = data;
-            $scope.id = $rootScope.id;
-            $scope.shareCode.innerHTML = $rootScope.id;
+            $scope.shareCode.innerHTML = data;
         });
 
         //Gets id of guest
@@ -177,7 +176,7 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
             $rootScope.turn = false;
             $rootScope.playing = false;
         });
-        
+
         
         
         

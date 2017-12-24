@@ -148,7 +148,7 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
 
     //Initialize Listeners and other things
     $scope.initializeListeners = function(){
-        $scope.shareMessage.style.opacity = "0";
+        //$scope.shareMessage.style.opacity = "0";
         $scope.userPlacement = new Audio('assets/userPlacement.wav');
         $scope.friendPlacement = new Audio('assets/friendPlacement.wav');
         if($rootScope.color == 'red')

@@ -78,6 +78,7 @@ html {
   background-color: #ff6868;
   border-radius: 100px;
   transition: all ease .3s;
+  box-shadow: 0px 5px 5px #272a2d;
 }
 
 .main-wrapper .board-wrapper .board {
@@ -88,9 +89,9 @@ html {
   border-radius: 5px;
   margin: auto;
   padding: 10px 10px;
+  position: relative;
+  box-shadow: 0px 5px 5px #272a2d;
   justify-content: center;
-  border: 5px solid #005196;
-  border-top: 5px solid #003a6d;
   transition: all ease .5s;
 }
 
@@ -140,5 +141,10 @@ html {
                         }
                     }
                     */
+}
+
+.main-wrapper .board-wrapper .board:active {
+  transform: translateY(5px);
+  box-shadow: 0px 0px 0px #272a2d;
 }
 /*# sourceMappingURL=game.css.map */

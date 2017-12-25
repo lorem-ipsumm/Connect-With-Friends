@@ -8,6 +8,10 @@ html {
   padding: 0;
 }
 
+#github-banner {
+  width: 150px;
+}
+
 body {
   background-color: #33383d;
 }
@@ -49,6 +53,8 @@ body {
 .control-wrapper {
   margin-top: 2em;
   padding: 0 5px;
+  position: relative;
+  width: 100%;
 }
 
 .control-wrapper button, .control-wrapper input, .control-wrapper span {
@@ -68,15 +74,15 @@ body {
 .control-wrapper button {
   cursor: pointer;
   background-color: white;
-  border-radius: 5px;
   font-size: 1.5rem;
+  box-shadow: 0px 5px 0px #b7b7b7;
   border: none;
   transition: all ease .3s;
 }
 
 .control-wrapper button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0px 2px 5px black;
+  transform: translateY(5px);
+  box-shadow: 0px 0px 0px #b7b7b7;
 }
 
 .control-wrapper .info-message {
@@ -88,9 +94,11 @@ body {
   text-align: center;
   margin-bottom: .4rem;
   border: none;
-  border-radius: 5px;
   font-size: 1.5rem;
   color: #4c4c4c;
+  margin: 0;
+  position: relative;
+  box-shadow: 0px 5px 0px #a3a3a3;
 }
 
 .control-wrapper input::-webkit-input-placeholder {
@@ -111,6 +119,39 @@ body {
 .control-wrapper input:-ms-input-placeholder {
   font-size: 1.5rem;
   color: #4c4c4c;
+}
+
+.control-wrapper .code-wrapper {
+  display: flex;
+  width: 100%;
+  position: relative;
+  height: auto;
+}
+
+.control-wrapper .code-wrapper .side-box {
+  background-color: #b7b7b7;
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 40px;
+  z-index: 1;
+  border: 2px solid white;
+  transition: all linear 0.1s;
+}
+
+.control-wrapper .code-wrapper .side-box svg {
+  cursor: pointer;
+  position: absolute;
+  right: 0px;
+  top: -2px;
+  color: #ff6868;
+  width: 30px;
+  height: 50px;
+  z-index: 2;
+}
+
+.control-wrapper .code-wrapper .side-box:hover {
+  background-color: #33383d;
 }
 
 .control-wrapper .loading-wrapper {

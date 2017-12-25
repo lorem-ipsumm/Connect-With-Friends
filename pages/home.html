@@ -1,4 +1,4 @@
-<a href="https://github.com/SolarFloss/Connect-With-Friends"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6286ade715e9bea433b4705870de482a654f78a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"></a>
+<a href="https://github.com/SolarFloss/Connect-With-Friends"><img id="github-banner"style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6286ade715e9bea433b4705870de482a654f78a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"></a>
 <div class="home-wrapper">
     <div class="title-wrapper">
             <span class="title">CONNECT</span>
@@ -8,8 +8,12 @@
         <div class="control-wrapper">
             <span class="info-message"></span>
             <br>
-            <input type="text" id="code-input" ng-keyup="keyPressed($event)" ng-model="input" placeholder="Input Friend ID">
-            <br>
+            <div class="code-wrapper">
+                <input type="text" id="code-input" ng-keyup="keyPressed($event)" ng-model="input" placeholder="Input Friend ID">
+                <div class="side-box" ng-click="guestSetup()">
+                    <svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1152 896q0 26-19 45l-448 448q-19 19-45 19t-45-19-19-45v-896q0-26 19-45t45-19 45 19l448 448q19 19 19 45z"/></svg>
+                </div>
+            </div>
             <br>
             <span>OR</span>
             <br>

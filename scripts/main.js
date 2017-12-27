@@ -16,6 +16,12 @@ app.config(function($routeProvider, $locationProvider, $qProvider){
     .when('/game',{
         templateUrl : 'pages/game.html',
         controller : 'gameController'
+    })
+
+    .otherwise({
+        templateUrl : 'pages/direct.html',
+        controller : 'directController'
+
     });
 
     $qProvider.errorOnUnhandledRejections(false);

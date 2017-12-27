@@ -7,7 +7,6 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
     $scope.replayButton = document.getElementsByClassName('replay-button')[0];
     $scope.initialized = false;
     $rootScope.replay = false;
-    $scope.id = "loading";
     $scope.map = [
         [0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0],
@@ -25,7 +24,7 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
     };
 
 
-    $scope.shareCode.innerHTML = $rootScope.id;
+    $scope.shareCode.innerHTML = "https://connect-with-friends.herokuapp.com/" + $rootScope.id;
 
     //Game Loop?
     $scope.playGame = function(){
@@ -55,7 +54,7 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
         //Server sends id
         $rootScope.socket.on('get-id',function(data){
             $rootScope.id = data;
-            $scope.shareCode.innerHTML = data;
+            $scope.shareCode.innerHTML = "https://connect-with-friends.herokuapp.com/" + data;
         });
     };
 

@@ -93,10 +93,37 @@ html {
   font-weight: bold;
   font-size: .9rem;
   border-radius: 0px 5px 5px 0px;
+  position: relative;
+}
+
+.main-wrapper .text-wrapper .code-container .copy-button:after {
+  content: '';
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  top: -10px;
+  opacity: 0;
+  position: absolute;
+  background-color: #ff6868;
+  transition: all ease 0.6s;
+  outline: none;
 }
 
 .main-wrapper .text-wrapper .code-container .copy-button:hover {
   background-color: #e54e4e;
+}
+
+.main-wrapper .text-wrapper .code-container .copy-button:active:after {
+  content: '';
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  top: 0px;
+  opacity: 1;
+  position: absolute;
+  background-color: #ff6868;
+  outline: none;
+  transition: all ease 0s;
 }
 
 .main-wrapper .text-wrapper .code-container.invisible {

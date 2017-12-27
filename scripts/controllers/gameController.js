@@ -388,6 +388,10 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
         }
     };
 
+    $scope.copyClicked = function(){
+        $scope.shareCode.select();
+        document.execCommand('copy');
+    };
 
     //Notify friend when opponent disconnects
     window.onbeforeunload = function(){

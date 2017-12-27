@@ -24,7 +24,7 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
     };
 
 
-    $scope.shareCode.innerHTML = "https://connect-with-friends.herokuapp.com/" + $rootScope.id;
+    $scope.shareCode.innerHTML = "https://connect-with-friends.herokuapp.com/#!/" + $rootScope.id;
 
     //Game Loop?
     $scope.playGame = function(){
@@ -54,7 +54,7 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
         //Server sends id
         $rootScope.socket.on('get-id',function(data){
             $rootScope.id = data;
-            $scope.shareCode.innerHTML = "https://connect-with-friends.herokuapp.com/" + data;
+            $scope.shareCode.innerHTML = "https://connect-with-friends.herokuapp.com/#!/" + data;
         });
     };
 

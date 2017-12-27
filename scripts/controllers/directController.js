@@ -1,4 +1,5 @@
 angular.module('main').controller('directController',function($scope,$rootScope){
+    console.log("t")
     $scope.url = window.location.href;
     $scope.shareCode = ($scope.url).substring($scope.url.indexOf('#!/')+3);
     $rootScope.socket = io('https://connect-with-friends.herokuapp.com', {secure: true, rejectUnauthorized: false});

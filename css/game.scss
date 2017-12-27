@@ -50,7 +50,6 @@ html{
         span{
             display: block;
             margin: 0px 0px;
-
             i{
                 color: $red;
                 letter-spacing: 1px;
@@ -64,9 +63,54 @@ html{
             &:last-child{
                 font-size: 1.3rem;
             }
+
+            &.invisible{
+                height: 0;
+                opacity: 0;
+            }
         }
 
-        button{
+        .code-container{
+            display: flex;
+            max-width: 350px;
+            margin: auto;
+            box-shadow: 0px 3px 3px #272a2d;
+            font-family: 'Raleway', sans-serif;
+            transition: all ease 0.3s;
+            input{
+                height: 30px;
+                color: $red;
+                font-size: 1em;
+                padding: 0px 5px;
+                flex: 6;
+                border: none;
+            }
+            .copy-button{
+                
+                height: 30px;
+                width: auto;
+                //margin: -5px 0px;
+                border: none;
+                background-color: $red;
+                flex: 1;
+                color: white;
+                font-weight: bold;
+                font-size: .9rem;
+                border-radius: 0px 5px 5px 0px;
+                &:hover{
+                    background-color: #e54e4e;
+                }
+            }
+
+            &.invisible{
+                height: 0;
+                opacity: 0;
+            }
+        }
+
+        
+
+        .replay-button{
             width: auto;
             height: 0px;
             content: 'Click For Rematch';

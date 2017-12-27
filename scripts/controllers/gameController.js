@@ -1,10 +1,11 @@
 angular.module('main').controller('gameController',function($scope,$rootScope){
     $scope.indicator = document.getElementsByClassName("indicator")[0];
     $scope.shareMessage = document.getElementById("share");
-    $scope.shareCode = document.getElementsByClassName('share-code')[0];
+    $scope.shareCode = document.getElementsByClassName('share-input')[0];
     $scope.message = document.getElementsByClassName('message')[0];
     $scope.board = document.getElementsByClassName('board')[0];
     $scope.replayButton = document.getElementsByClassName('replay-button')[0];
+    $scope.codeContainer = document.getElementsByClassName('code-container')[0];
     $scope.initialized = false;
     $rootScope.replay = false;
     $scope.map = [
@@ -23,8 +24,9 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
         $scope.indicator.style.transform = "translateX(" + ($scope.indicator.clientWidth*(7/5.45))*(x-1) +"px)";
     };
 
-
-    $scope.shareCode.innerHTML = "https://connect-with-friends.herokuapp.com/#!/" + $rootScope.id;
+    
+    $scope.shareCode.readOnly = true;
+    $scope.shareCode.value = "https://connect-with-friends.herokuapp.com/#!/" + $rootScope.id;
 
     //Game Loop?
     $scope.playGame = function(){
@@ -54,7 +56,7 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
         //Server sends id
         $rootScope.socket.on('get-id',function(data){
             $rootScope.id = data;
-            $scope.shareCode.innerHTML = "https://connect-with-friends.herokuapp.com/#!/" + data;
+            $scope.shareCode.value = "https://connect-with-friends.herokuapp.com/#!/" + data;
         });
     };
 
@@ -187,7 +189,9 @@ angular.module('main').controller('gameController',function($scope,$rootScope){
 
     //Initialize Listeners and other things
     $scope.initializeListeners = function(){
-        $scope.shareMessage.style.opacity = "0";
+        
+        $scope.codeContainer.classList.toggle("invisible");
+        $scope.shareMessage.classList.toggle('invisible');
         $scope.userPlacement = new Audio('assets/userPlacement.wav');
         $scope.friendPlacement = new Audio('assets/friendPlacement.wav');
         if($rootScope.color == 'red')

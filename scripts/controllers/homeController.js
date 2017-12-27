@@ -1,14 +1,26 @@
 angular.module('main').controller('homeController',function($scope,$rootScope){
     $scope.input;
     $rootScope.playing = false;
+    $rootScope.socket = undefined;
     $rootScope.requested = false;
     $scope.message = document.getElementsByClassName('info-message')[0];
     
 
 
+    $scope.resetVariables = function(){
+        $rootScope.turn = false;
+        $rootScope.color = undefined;
+        $rootScope.playing = false;
+        $rootScope.friend = undefined;
+        $rootScope.id = undefined;
+        $rootScope.socket = undefined;
+        $rootScope.requested = false;
+    }
+
+    
 
     $scope.guestSetup = function(){
-        console.log("h");
+        $scope.resetVariables();
         $rootScope.socket = io('https://connect-with-friends.herokuapp.com', {secure: true, rejectUnauthorized: false});
         
         //Request to play with user with specified id
@@ -34,15 +46,21 @@ angular.module('main').controller('homeController',function($scope,$rootScope){
                     $rootScope.color = 'red';
                 
                 
-                document.location.href = "../#!/game";
+                document.location.href = "../#!/game"; 
             }else if(data[0] == false){
                 $scope.message.innerHTML = "It Looks Like Your Friend Is Busy :/";
             }
         });
+
+        
     };
 
     $scope.startClicked = function(){
         $scope.guestSetup();
+    };
+
+    $scope.quickPlay = function(){
+
     };
 
     $scope.keyPressed = function(e){
@@ -54,6 +72,7 @@ angular.module('main').controller('homeController',function($scope,$rootScope){
 
     $rootScope.newGame = function(){
         //https://connect-with-friends.herokuapp.com
+        $scope.resetVariables();
         $rootScope.socket = io('https://connect-with-friends.herokuapp.com', {secure: true, rejectUnauthorized: false});
         
         //Request id from server
@@ -65,4 +84,6 @@ angular.module('main').controller('homeController',function($scope,$rootScope){
             document.location.href = "../#!/game";
         });
     }
+
+    
 });

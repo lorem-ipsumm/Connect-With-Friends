@@ -60,6 +60,51 @@ html {
   font-size: 1.3rem;
 }
 
+.main-wrapper .text-wrapper button {
+  width: auto;
+  height: 0px;
+  content: 'Click For Rematch';
+  opacity: 0;
+  font-family: 'Raleway', sans-serif;
+  color: #33383D;
+  padding: 0px 1em;
+  font-weight: bold;
+  border: none;
+  font-size: 1em;
+  border-radius: 5px;
+  transition: all linear .2s;
+}
+
+.main-wrapper .text-wrapper button.visible {
+  cursor: pointer;
+  width: auto;
+  height: 30px;
+  opacity: 1;
+  box-shadow: 0px 4px 0px #ba4141;
+  color: white;
+  background-color: #ff6868;
+}
+
+.main-wrapper .text-wrapper button.waiting {
+  content: 'Waiting For Response';
+  background-color: #1daf89;
+  box-shadow: 0px 0px 0px #2bd8aa;
+  transform: translateY(4px);
+}
+
+.main-wrapper .text-wrapper button.waiting:hover {
+  background-color: #2bd8aa;
+}
+
+.main-wrapper .text-wrapper button:active {
+  transform: translateY(4px);
+  box-shadow: 0px 0px 0px #ba4141;
+}
+
+.main-wrapper .text-wrapper button:hover {
+  background-color: #e05353;
+}
+
 .main-wrapper .board-wrapper {
   height: 500px;
   width: 100%;

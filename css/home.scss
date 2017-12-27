@@ -79,12 +79,13 @@ body{
     padding: 0 5px;
     position: relative;
     width: 100%;
+    display: flex;
+    flex-direction: column;
     button, input, span{
         font-family: 'Raleway', sans-serif;
         width: 300px;
         height:50px;
         width: 100%;
-        margin: 1em 0px;
     }
     span{
         //display: block;
@@ -101,10 +102,12 @@ body{
         box-shadow: 0px 5px 0px #b7b7b7;
         border: none;
         transition: all ease .3s;
+
         &:hover{
             transform: translateY(5px);
             box-shadow: 0px 0px 0px #b7b7b7;
         }
+        
     }
 
     .info-message{
@@ -114,11 +117,10 @@ body{
     input{
         transition: all ease .5s;
         text-align: center;
-        margin-bottom: .4rem;
         border: none;
         font-size: 1.5rem;
         color: #4c4c4c;
-        margin: 0;
+        //margin-bottom: 1em;
         position: relative;
         box-shadow: 0px 5px 0px #a3a3a3;
         @include placeholder {
